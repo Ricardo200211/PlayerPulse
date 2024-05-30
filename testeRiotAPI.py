@@ -1,6 +1,6 @@
 import requests
 
-API_KEY = 'RGAPI-5bb518ad-56bf-471b-81d0-6b36658b63c1'  # Substitua pela sua chave de API da Riot Games
+API_KEY = 'RGAPI-5bb518ad-56bf-471b-81d0-6b36658b63c1'  
 
 # Mapeamento das regiões para os URLs base
 REGION_URLS = {

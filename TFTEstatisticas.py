@@ -23,7 +23,7 @@ def get_account_by_riot_id(region, game_name, tag_line):
     if response.status_code == 200:
         return response.json()
     else:
-        print(f"Erro ao buscar conta: {response.status_code}")
+        print(f"Erro ao procurar conta: {response.status_code}")
         return None
 
 
@@ -45,7 +45,7 @@ def get_match_history(region, puuid, count=20):
     if response.status_code == 200:
         return response.json()
     else:
-        print(f"Erro ao buscar histórico de partidas: {response.status_code}")
+        print(f"Erro ao pesquisar histórico de partidas: {response.status_code}")
         return None
 
 
@@ -63,14 +63,14 @@ def get_match_details(region, match_id):
     if response.status_code == 200:
         return response.json()
     else:
-        print(f"Erro ao buscar detalhes da partida: {response.status_code}")
+        print(f"Erro ao procurar detalhes da partida: {response.status_code}")
         return None
 
 
 def main():
-    region = input("Digite a região (americas, asia, europe): ").strip().lower()
-    game_name = input("Digite o gameName: ").strip()
-    tag_line = input("Digite o tagLine: ").strip()
+    region = input("Insira a região (americas, asia, europe): ").strip().lower()
+    game_name = input("Insira o gameName: ").strip()
+    tag_line = input("Insira o tagLine: ").strip()
 
     account_data = get_account_by_riot_id(region, game_name, tag_line)
     if account_data:
@@ -80,7 +80,7 @@ def main():
         print(f"TagLine: {account_data.get('tagLine', 'N/A')}")
 
         # Obter histórico de partidas
-        match_count = int(input("Quantas partidas você deseja buscar? (max 100): "))
+        match_count = int(input("Quantas partidas deseja pesquisar? (max 100): "))
         match_history = get_match_history(region, puuid, count=match_count)
         if match_history:
             print("Histórico de Partidas:")

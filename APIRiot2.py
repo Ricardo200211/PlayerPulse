@@ -1,8 +1,8 @@
 import requests
 
-API_KEY = 'RGAPI-5bb518ad-56bf-471b-81d0-6b36658b63c1'  
+API_KEY = 'RGAPI-ade6d8f0-1e43-4db9-b512-270349b74791'  
 
-# Mapeamento das regiões para os URLs base
+
 REGION_URLS = {
     'americas': 'https://americas.api.riotgames.com',
     'asia': 'https://asia.api.riotgames.com',

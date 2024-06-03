@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - PlayerPulse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='perfil.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="icons">
+                <img src="../static/images/lol.png" alt="LoL">
+                <img src="../static/images/cs.png" alt="CS:GO">
+                <img src="../static/images/Apex-Legends-Emblem.png" alt="Apex">
+            </div>
+            <div class="menu">
+                <div class="menu-item" onclick="window.location.href='/abrir_ecra_principal'">Início</div>
+                <div class="menu-item">Leaderboard</div>
+                <div class="menu-item" onclick="window.location.href='/abrir_noticias'">Notícias</div>
+                <div class="menu-item">VS</div>
+                <div class="menu-item" onclick="window.location.href='/abrir_esports'">Esports</div>
+            </div>
+            <div class="menu-item" onclick="window.location.href='/abrir_perfil'">
+                <a id="perfil">{{name}}</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main_logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="PlayerPulse Logo">
+                <span>PlayerPulse</span>
+            </div>
+            <div class="perfil">
+                <div class="imagens-uti">
+                    <img src="{{ url_for('static', filename='images/do-utilizador.png') }}" alt="Ícone de usuário">
+                    <input type="text" id="Nome_perfil" name="Nome_perfil" value="{{name}}">
+                </div>
+                <div class="imagens-email">
+                    <img src="{{ url_for('static', filename='images/email.png') }}" alt="email">
+                    <input type="text" id="email" name="email" value="{{email}}">
+                </div>
+                <div class="imagens-senha">
+                    <img src="{{ url_for('static', filename='images/chave.png') }}" alt="senha">
+                    <button type="button">Alterar Palavra-Passe</button>
+                </div>
+                <div class="imagens-riot">
+                    <img src="{{ url_for('static', filename='images/icons8-riot-games-32.png') }}" alt="riot">
+                    <form action="/login_riot" method="post">
+                        <input type="text" id="Riot" name="Riot" value="{{riot_name}}">
+                        <select name="region" id="region">
+                            <option value="europe">Europe</option>
+                            <option value="americas">America</option>
+                            <option value="asia">Asia</option>
+                        </select>
+                        <input type="submit" value="Guardar">
+                    </form>
+                </div>
+                <div class="imagens-steam">
+                    <img src="{{ url_for('static', filename='images/icons8-steam-32.png') }}" alt="steam">
+                    <input type="text" id="steam" name="steam" value="{{steam_name}}">
+                    {% if steam_name %}
+                        <button type="button" onclick="window.location.href='/logout_steam'">Logout</button>
+                    {% else %}
+                        <button type="button" onclick="window.location.href='/login_steam'">Login</button>
+                    {% endif %}
+                </div>
+                <button type="submit" class="guardar">Guardar</button>
+                <div class="register"></div>
+                <button type="button" onclick="window.location.href='/logout'">Sair da Conta</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

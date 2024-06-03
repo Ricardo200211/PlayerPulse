@@ -1,0 +1,213 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #576F92;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    margin-top: -50px;
+}
+
+.login-container {
+    width: 70%;
+    height: auto;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #46576F;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    margin-top: -30px;
+    text-align: center;
+}
+
+.logo {
+    width: 200px;
+}
+
+.login-form input {
+    width: calc(100% - 200px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.Perfil{
+    width: 70%;
+    height: auto;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #46576F;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.Perfil input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-position: 10px center; /* Posição dos ícones */
+}
+
+.img{
+    float: left;
+    margin-right: 1%;
+}
+
+.ImagensUti{
+    display: flex;
+    align-items: center;
+}
+
+.ImagensUti img{
+    margin-right: 2%;
+}
+
+.ImagensEmail{
+    display: flex;
+    align-items: center;
+}
+
+.ImagensEmail img{
+    margin-right: 2%;
+}
+
+.ImagensSenha{
+    display: flex;
+    align-items: center;
+}
+
+.ImagensSenha img{
+    margin-right: 2%;
+}
+
+.ImagensRiot{
+    display: flex;
+    align-items: center;
+}
+
+.ImagensRiot img{
+    margin-right: 2%;
+}
+
+.ImagensSteam{
+    display: flex;
+    align-items: center;
+}
+
+.ImagensSteam img{
+    margin-right: 2%;
+}
+
+.ImagensEA{
+    display: flex;
+    align-items: center;
+}
+
+.ImagensEA img{
+    margin-right: 2%;
+    max-width: 32px;
+    max-height: 32px;
+}
+
+.login-form{
+    width: 50%;
+    margin-bottom: 30px;
+}
+
+.forgot-password {
+    color: #87CEFA;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.register-link {
+    color: #87CEFA;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.login-button,
+.google-login,
+.Guardar {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.main_logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: auto;
+}
+
+.main_logo img {
+    max-width: 100px;
+}
+
+.main_logo span {
+    color: orange;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: -25px;
+    margin-bottom: 20px;
+}
+
+.Perfil{
+    margin-top: 20px;
+}
+
+
+.login-button {
+    background-color: #ff6600;
+    color: white;
+}
+
+.Guardar{
+    background-color: #ccc;
+    color: black;
+}
+
+.google-login {
+    background-color: #dd4b39;
+    color: white;
+}
+
+.register {
+    text-align: center;
+    margin-top: 10px;
+    background-color: #46576F;
+}
+
+.register span {
+    margin-right: 5px;
+    font-size: 0.9em;
+}
+
+.header h1 {
+    color: #FF8C00;
+
+}
+

@@ -2,7 +2,8 @@ import requests
 from datetime import datetime
 import locale
 
-API_TOKEN = 'XNtIAkyP6EZt9OSC8KqO_3dfhxMWcOLqM3DPMPoCXiqrjzp4cxo'
+arr_maches = []
+API_TOKEN = 'E9Arj0VU0akb2QRGbQAAAVmXh9B_x85OlvwEs9uaAx2gECtuUM0'
 headers = {
     'Authorization': f'Bearer {API_TOKEN}'
 }
@@ -23,18 +24,21 @@ def format_datetime(datetime_str):
     dt = datetime.strptime(datetime_str, "%Y-%m-%dT%H:%M:%SZ")
     return dt.strftime("%d de %B de %Y, %H:%M UTC")
 
-def main():
+def get_maches():
     matches = get_upcoming_matches()
     if matches:
         for match in matches:
-            game = match['videogame']['name']
-            team1 = match['opponents'][0]['opponent']['name']
-            team2 = match['opponents'][1]['opponent']['name']
-            date = format_datetime(match['begin_at'])
-            print(f"Jogo: {game}")
-            print(f"Partida: {team1} vs {team2}")
-            print(f"Data: {date}")
-            print()
+            try:
+                game = match['videogame']['name']
+                team1 = match['opponents'][0]['opponent']['name']
+                img_team1 = match['opponents'][0]['opponent']['image_url']
+                team2 = match['opponents'][1]['opponent']['name']
+                img_team2 = match['opponents'][1]['opponent']['image_url']
+                date = format_datetime(match['begin_at'])
+                dict= {"game": game, "team1": team1, "img_team1": img_team1, "img_team2": img_team2, "team2": team2, "date": date}
+                arr_maches.append(dict)
+            except Exception as e:
+                pass
+    return arr_maches
 
-if __name__ == "__main__":
-    main()
+print(get_maches())

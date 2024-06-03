@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PlayerPulse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="header">
+            <img src="../static/images/logo.png" alt="PlayerPulse Logo" class="logo">
+            <h1>PlayerPulse</h1>
+        </div>
+        <form class="login-form" action="/login_normal" method="post">
+            <input type="text" placeholder="Email" id="username" name="email" required>
+            <input type="password" placeholder="Palavra-passe" id="password" name="passwd" required>
+            <button type="submit" class="login-button">Login</button>
+        </form>
+        <a href="#" class="forgot-password">Esqueceu-se da senha?</a>
+        <div class="register">
+                    <span>Não tens Conta?</span><button onclick="window.location.href='/abrir_registo'" class="register-link">Regista</button>
+        </div>
+        <button onclick="window.location.href='/login'" type="button" class="google-login">Sign in with Google</button>
+    </div>
+</body>
+</html>

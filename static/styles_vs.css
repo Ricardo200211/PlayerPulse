@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: #617891;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #3B4C61;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.icons img {
+    width: 30px;
+    height: 30px;
+}
+
+.menu {
+    flex-grow: 1;
+}
+
+.menu-item {
+    padding: 15px 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background-color: #4A5A72;
+}
+
+.main {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.main_logo img {
+    max-width: 100px;
+}
+
+.main_logo span {
+    color: orange;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: -25px;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.league-info {
+    background-color: #46576F;
+    border-radius: 8px;
+    padding: 20px;
+    width: 90%;
+    margin-bottom: 20px;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.separator {
+    width: 90%;
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 20px 0;
+}
+
+.league-entry {
+    margin-bottom: 10px;
+}
+
+.matches-container {
+    width: 90%;
+    max-height: 38vh;
+    overflow-y: auto;
+}
+
+.match-card {
+    background-color: #46576F;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.match-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #4A5A72;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.teams {
+    display: flex;
+    justify-content: space-between;
+}
+
+.team {
+    width: 45%;
+}
+
+.team h3 {
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.player {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #4A5A72;
+    color: white;
+}
+
+.player:last-child {
+    border-bottom: none;
+}

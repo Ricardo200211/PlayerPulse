@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayerPulse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="icons">
+                <img src="../static/images/lol.png" alt="LoL">
+                <img src="../static/images/cs.png" alt="CS:GO">
+                <img src="../static/images/Apex-Legends-Emblem.png" alt="Apex">
+            </div>
+            <div class="menu">
+                <div class="menu-item" onclick="window.location.href='/abrir_ecra_principal'">Início</div>
+                <div class="menu-item">Leaderboard</div>
+                <div class="menu-item" onclick="window.location.href='/abrir_noticias'">Notícias</div>
+                <div class="menu-item">VS</div>
+                <div class="menu-item" onclick="window.location.href='/abrir_esports'">Esports</div>
+            </div>
+            <div class="menu-item" onclick="window.location.href='/abrir_perfil'">
+                <a id="perfil">{{name}}</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="search-bar">
+                <input type="text" placeholder="Pesquisar jogos...">
+                <div class="main_logo">
+                    <img src="../static/images/logo.png" alt="PlayerPulse Logo">
+                    <span>PlayerPulse</span>
+                </div>
+            </div>
+            <div class="content">
+                <div class="section">
+                    <div class="section-header">
+                        <span>Próximos jogos - View all</span>
+                    </div>
+                    <div class="games-container">
+                        {% for game in esports_games %}
+                            <div class="games-item">
+                                    <h3>{{ game.team1 }}   <img src="{{game.img_team1}}"> VS <img src="{{game.img_team2}}">   {{ game.team2}}</h3>
+                                    <p>{{ game.game }}</p>
+                                    <p>{{ game.date }}</p>
+                            </div>
+                            {% if not loop.last %}
+                                <hr class="separator">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

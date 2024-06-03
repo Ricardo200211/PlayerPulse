@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayerPulse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_vs.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="icons">
+                <img src="{{ url_for('static', filename='images/lol.png') }}" alt="LoL">
+                <img src="{{ url_for('static', filename='images/cs.png') }}" alt="CS:GO">
+                <img src="{{ url_for('static', filename='images/Apex-Legends-Emblem.png') }}" alt="Apex">
+            </div>
+            <div class="menu">
+                <div class="menu-item" onclick="window.location.href='/abrir_ecra_principal'">Início</div>
+                <div class="menu-item">Leaderboard</div>
+                <div class="menu-item" onclick="window.location.href='/abrir_noticias'">Notícias</div>
+                <div class="menu-item">VS</div>
+                <div class="menu-item" onclick="window.location.href='/abrir_esports'">Esports</div>
+            </div>
+            <div class="menu-item" onclick="window.location.href='/abrir_perfil'">
+                <a id="perfil">{{ name }}</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="search-bar">
+                <div class="main_logo">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="PlayerPulse Logo">
+                    <span>PlayerPulse</span>
+                </div>
+            </div>
+            <div class="content">
+                <div class="league-info">
+                    <h2>League Information</h2>
+                    {% for entry in stats.league_entries %}
+                        {% if entry.queueType %}
+                            <div class="league-entry">
+                                <p>Summoner Name: {{ riot_name }}</p>
+                                <p>Summoner Level: {{ stats.summoner_data.summoner_level }}</p>
+                                <p>Tier: {{ entry.tier }}</p>
+                                <p>Rank: {{ entry.rank }}</p>
+                                <p>League Points: {{ entry.leaguePoints }}</p>
+                                <p>Wins: {{ entry.wins }}</p>
+                                <p>Losses: {{ entry.losses }}</p>
+                            </div>
+                        {% else %}
+                            <p>{{ entry.message }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <hr class="separator">
+                <div class="matches-container">
+                    {% for match in matches %}
+                    <div class="match-card">
+                        <div class="match-header">
+                            <span>Match ID: {{ match.match_id }}</span>
+                            <span>Mode: {{ match.modo }}</span>
+                            <span>Duration: {{ match.duracao }} seconds</span>
+                            <span>Date: {{ match.data }}</span>
+                        </div>
+                        <div class="teams">
+                            <div class="team">
+                                <h3>Team 1</h3>
+                                {% for player in match.match_data[:5] %}
+                                <div class="player">
+                                    <span>{{ player.player }}</span>
+                                    <span>Champion: {{ player.champion }}</span>
+                                    <span>KDA: {{ player.KDA }}</span>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="team">
+                                <h3>Team 2</h3>
+                                {% for player in match.match_data[5:] %}
+                                <div class="player">
+                                    <span>{{ player.player }}</span>
+                                    <span>Champion: {{ player.champion }}</span>
+                                    <span>KDA: {{ player.KDA }}</span>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

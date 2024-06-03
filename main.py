@@ -133,6 +133,7 @@ def abrir_perfil():
         query = "select * from steam where id_player = %s"
         cursor.execute(query, (session['id'], ))
         steam_player = cursor.fetchall()
+        session['steam_id'] = steam_player[0][1]
         session['steam_name'] = steam_player[0][2]
         cursor2 = conexao.cursor()
         query2 = "select * from riot where id_player = %s"
@@ -429,7 +430,7 @@ def profile_steam():
         'games_info': games_info
     }
 
-    return jsonify(profile_data)
+    return profile_data
 
 
 @app.route('/logout_steam')
@@ -455,7 +456,6 @@ def login_riot():
             conexao.commit()
             return render_template_string(open('templates/perfil.html', encoding='utf-8').read(), name=session['name'],email=session['email'])
     except Exception as e:
-        print(e)
         return "Erro ao conectar com a base de dados"
     finally:
         conexao.close()
@@ -479,6 +479,34 @@ def abrir_stats():
     stats = riotAPI.main(session['riot_regiao'], 'euw1', session['riot_name'], session['riot_tag'])
     return render_template_string(open('templates/vs.html', encoding='utf-8').read(), name=session['name'], matches=matches, stats=stats, riot_name=session['riot_name'])
 
+@app.route('/escolher_jogo', methods=['POST'])
+def escolher_jogo():
+    game_choice = request.form.get('game_choice')
+    if game_choice == 'lol':
+        matches = APIriot.main(session['riot_regiao'], session['riot_name'], session['riot_tag'])
+        stats = riotAPI.main(session['riot_regiao'], 'euw1', session['riot_name'], session['riot_tag'])
+        return render_template_string(open('templates/vs.html', encoding='utf-8').read(), name=session['name'], matches=matches, stats=stats, riot_name=session['riot_name'])
+    elif game_choice == 'csgo':
+        steam = profile_steam()
+        return render_template_string(open('templates/vs_csgo.html', encoding='utf-8').read(), name=session['name'], steam=steam, steam_name=session['steam_name'])
+    elif game_choice == 'tft':
+        # Lógica para carregar dados do TFT
+        pass
+    elif game_choice == 'steam':
+        steam = profile_steam()
+        return render_template_string(open('templates/vs_steam.html', encoding='utf-8').read(), name=session['name'], steam=steam, steam_name=session['steam_name'])
+        pass
+
+@app.context_processor
+def utility_processor():
+    def divmod_custom(a, b):
+        return divmod(a, b)
+    return dict(divmod_custom=divmod_custom)
+
+
+@app.route('/abrir_stats123')
+def abrir_stats123():
+    pass
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)

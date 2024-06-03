@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayerPulse - CS:GO Stats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_vs_csgo.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="icons">
+                <img src="../static/images/lol.png" alt="LoL">
+                <img src="../static/images/cs.png" alt="CS:GO">
+                <img src="../static/images/Apex-Legends-Emblem.png" alt="Apex">
+            </div>
+            <div class="menu">
+                <div class="menu-item" onclick="window.location.href='/abrir_ecra_principal'">Início</div>
+                <div class="menu-item">Leaderboard</div>
+                <div class="menu-item" onclick="window.location.href='/abrir_noticias'">Notícias</div>
+                <div class="menu-item" onclick="window.location.href='/abrir_stats'">Estatísticas</div>
+                <div class="menu-item" onclick="window.location.href='/abrir_esports'">Esports</div>
+            </div>
+            <div class="menu-item" onclick="window.location.href='/abrir_perfil'">
+                <a id="perfil">{{nome}}</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main_logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="PlayerPulse Logo">
+                <span>PlayerPulse</span>
+            </div>
+            <div class="search-bar">
+                <form action="/escolher_jogo" method="POST">
+                    <select name="game_choice" id="game_choice">
+                        <option value="lol">League of Legends</option>
+                        <option value="csgo" selected>CS:GO</option>
+                        <option value="tft">TFT</option>
+                        <option value="steam">Steam</option>
+                    </select>
+                    <button type="submit">Selecionar Jogo</button>
+                </form>
+            </div>
+            <div class="content">
+                <div class="csgo-stats">
+                    <h2>CS:GO Statistics</h2>
+                    <div class="stat-entry">
+                        <p>Steam Name: {{ steam_name }}</p>
+                        <p>Hours Played: {{ steam.cs_go_hours }}</p>
+                    </div>
+                    <hr class="separator">
+                    <div class="stat-entry">
+                        <h3>General Stats</h3>
+                        <p>Kills: {{ steam.cs_go_stats.kills }}</p>
+                        <p>Deaths: {{ steam.cs_go_stats.deaths }}</p>
+                        <p>Wins: {{ steam.cs_go_stats.wins }}</p>
+                        <p>Assists: {{ steam.cs_go_stats.assists }}</p>
+                    </div>
+                    <hr class="separator">
+                    <div class="stat-entry">
+                        <h3>Most Played Map</h3>
+                        <p>Map: {{ steam.cs_go_stats.most_played_map }}</p>
+                        <p>Games on Most Played Map: {{ steam.cs_go_stats.most_played_map_games }}</p>
+                    </div>
+                    <hr class="separator">
+                    <div class="stat-entry">
+                        <h3>Map Games</h3>
+                        <ul>
+                        {% for map, games in steam.cs_go_stats.map_games.items() %}
+                            <li>{{ map }}: {{ games }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    <hr class="separator">
+                    <div class="stat-entry">
+                        <h3>Weapon Kills</h3>
+                        <ul>
+                        {% for weapon, kills in steam.cs_go_stats.weapon_kills.items() %}
+                            <li>{{ weapon }}: {{ kills }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

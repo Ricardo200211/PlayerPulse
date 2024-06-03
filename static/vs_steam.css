@@ -110,74 +110,53 @@ body {
     overflow-y: auto; /* Allow vertical scroll */
 }
 
-.league-info {
+.steam-stats {
     background-color: #46576F;
     border-radius: 8px;
     padding: 20px;
     width: 90%;
-    margin-bottom: 20px;
     color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .separator {
-    width: 90%;
+    width: 100%;
     border: 0;
     height: 1px;
     background: #ccc;
     margin: 20px 0;
 }
 
-.league-entry {
-    margin-bottom: 10px;
-}
-
-.matches-container {
-    width: 90%;
-    max-height: 60vh; /* Adjust height as needed to fit within the viewport */
-    overflow-y: auto;
-}
-
-.match-card {
-    background-color: #46576F;
-    border-radius: 8px;
-    padding: 20px;
+.player-info {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.match-header {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #4A5A72;
-    color: white;
+.player-info img {
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.stat-entry {
     margin-bottom: 10px;
 }
 
-.teams {
-    display: flex;
-    justify-content: space-between;
-}
-
-.team {
-    width: 45%;
-}
-
-.team h3 {
-    text-align: center;
-    color: white;
+.games-info h3 {
     margin-bottom: 10px;
 }
 
-.player {
-    display: flex;
-    justify-content: space-between;
+.games-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.games-info li {
     padding: 5px 0;
     border-bottom: 1px solid #4A5A72;
-    color: white;
 }
 
-.player:last-child {
+.games-info li:last-child {
     border-bottom: none;
 }
